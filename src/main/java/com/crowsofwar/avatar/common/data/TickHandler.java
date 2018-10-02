@@ -18,12 +18,17 @@ package com.crowsofwar.avatar.common.data;
 
 import com.crowsofwar.avatar.common.data.ctx.BendingContext;
 import io.netty.buffer.ByteBuf;
+import net.minecraftforge.fml.common.FMLLog;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author CrowsOfWar
  */
 public abstract class TickHandler {
 	private final int id;
+	//static Map<Integer, TickHandler> allHandlers = new HashMap<>();
 
 	public TickHandler(int id) {
 		this.id = id;
@@ -43,5 +48,14 @@ public abstract class TickHandler {
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(id);
 	}
+/*
+	public static TickHandler fromId(int id) {
+		FMLLog.info("allHandlers = %s", allHandlers);
+		return allHandlers.get(id);
+	}**/
+
+	/*public static TickHandler fromBytes(ByteBuf buf) {
+		return fromId(buf.readInt());
+	}**/
 
 }
